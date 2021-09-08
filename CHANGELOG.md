@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.3.0 - 2021-09-08
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Allows PHP 8 in composer.json.
+- Allows laminas-form ^3
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 1.2.1 - 2021-04-07
 
 ### Added
