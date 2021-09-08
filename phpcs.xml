@@ -15,10 +15,19 @@
 
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint">
         <!-- Don't auto-fix missing native type hints -->
-        <severity phpcbf-only="true">0</severity>
+        <severity>0</severity>
     </rule>
 
     <rule ref="SlevomatCodingStandard.Classes.SuperfluousExceptionNaming.SuperfluousSuffix">
+        <severity>0</severity>
+    </rule>
+
+    <!-- PHP 7.3 Compat -->
+    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference.ClassNameReferencedViaFunctionCall">
         <severity>0</severity>
     </rule>
 
