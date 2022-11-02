@@ -36,7 +36,7 @@ class MoneyInputFilterTest extends TestCase
         $this->hydrator = $hydrators->get(MoneyHydrator::class);
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: string, 1: int|float|string, 2: int}> */
     public function validData(): iterable
     {
         return [
@@ -77,7 +77,7 @@ class MoneyInputFilterTest extends TestCase
         self::assertEquals($expectedAmount, $money->getAmount());
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: mixed, 1: string, 2: string, 3: string}> */
     public function invalidValues(): iterable
     {
         return [
@@ -94,11 +94,10 @@ class MoneyInputFilterTest extends TestCase
 
     /**
      * @param mixed $code
-     * @param mixed $amount
      *
      * @dataProvider invalidValues
      */
-    public function testInvalidValues($code, $amount, string $elementName, string $errorKey): void
+    public function testInvalidValues($code, string $amount, string $elementName, string $errorKey): void
     {
         $this->filter->setData([
             'currency' => $code,
@@ -107,6 +106,7 @@ class MoneyInputFilterTest extends TestCase
         self::assertFalse($this->filter->isValid());
         $messages = $this->filter->getMessages();
         self::assertArrayHasKey($elementName, $messages);
+        self::assertIsArray($messages[$elementName]);
         self::assertArrayHasKey($errorKey, $messages[$elementName], json_encode($messages, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
     }
 
@@ -137,6 +137,7 @@ class MoneyInputFilterTest extends TestCase
         $messages = $parentInputFilter->getMessages();
         self::assertArrayHasKey('test', $messages);
         self::assertArrayHasKey('money', $messages);
+        self::assertIsArray($messages['money']);
         self::assertArrayHasKey('currency', $messages['money']);
         self::assertArrayHasKey('amount', $messages['money']);
     }

@@ -29,7 +29,7 @@ class MoneyHydratorTest extends TestCase
         );
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: mixed}> */
     public function invalidExtractionTypes(): array
     {
         return [
@@ -41,7 +41,11 @@ class MoneyHydratorTest extends TestCase
         ];
     }
 
-    /** @dataProvider invalidExtractionTypes */
+    /**
+     * @param mixed $arg
+     *
+     * @dataProvider invalidExtractionTypes
+     */
     public function testExtractThrowsExceptionForNonMoney($arg): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -79,6 +83,7 @@ class MoneyHydratorTest extends TestCase
             'currency' => 'GBP',
             'amount' => '10.00',
         ], null);
+        self::assertInstanceOf(Money::class, $money);
         self::assertEquals('GBP', $money->getCurrency()->getCode());
         self::assertEquals(1000, $money->getAmount());
     }

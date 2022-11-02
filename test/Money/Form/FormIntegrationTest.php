@@ -35,10 +35,10 @@ class FormIntegrationTest extends TestCase
                 'amount' => 1,
             ],
         ]);
-        $this->assertTrue($form->isValid());
+        self::assertTrue($form->isValid());
         $money = $object->getAmount();
-        $this->assertInstanceOf(Money::class, $money);
-        $this->assertEquals(100, $money->getAmount());
+        self::assertInstanceOf(Money::class, $money);
+        self::assertEquals(100, $money->getAmount());
     }
 
     public function testElementOptionsAndAttributesAreProvidedToIndividualElements(): void
@@ -64,10 +64,10 @@ class FormIntegrationTest extends TestCase
         ]);
         $fieldset = $form->get('money');
         assert($fieldset instanceof MoneyFieldset);
-        $this->assertInstanceOf(MoneyFieldset::class, $fieldset);
-        $this->assertSame('Currency Label', $fieldset->currencyElement()->getLabel());
-        $this->assertSame('Amount Label', $fieldset->amountElement()->getLabel());
-        $this->assertSame('c', $fieldset->currencyElement()->getAttribute('class'));
-        $this->assertSame('a', $fieldset->amountElement()->getAttribute('class'));
+        self::assertInstanceOf(MoneyFieldset::class, $fieldset);
+        self::assertSame('Currency Label', $fieldset->currencyElement()->getLabel());
+        self::assertSame('Amount Label', $fieldset->amountElement()->getLabel());
+        self::assertSame('c', $fieldset->currencyElement()->getAttribute('class'));
+        self::assertSame('a', $fieldset->amountElement()->getAttribute('class'));
     }
 }

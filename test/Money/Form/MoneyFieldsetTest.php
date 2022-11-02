@@ -39,10 +39,10 @@ class MoneyFieldsetTest extends TestCase
         $currency = new Text();
         $amount = new Text();
         $fieldset = new MoneyFieldset($currency, $amount, $this->hydrator, new Currency('GBP'));
-        $this->assertSame('currency', $currency->getName());
-        $this->assertSame('amount', $amount->getName());
-        $this->assertContains($currency, $fieldset->getElements());
-        $this->assertContains($amount, $fieldset->getElements());
+        self::assertSame('currency', $currency->getName());
+        self::assertSame('amount', $amount->getName());
+        self::assertContains($currency, $fieldset->getElements());
+        self::assertContains($amount, $fieldset->getElements());
     }
 
     private function fieldset(): MoneyFieldset
@@ -73,13 +73,13 @@ class MoneyFieldsetTest extends TestCase
         $form->bind($bind);
         $form->isValid();
         $value = $form->getData();
-        $this->assertObjectHasAttribute('amount', $value);
-        $this->assertInstanceOf(Money::class, $value->amount);
+        self::assertObjectHasAttribute('amount', $value);
+        self::assertInstanceOf(Money::class, $value->amount);
         $moneyProperty = $value->amount;
         assert($moneyProperty instanceof Money);
-        $this->assertNotSame($money, $moneyProperty);
-        $this->assertEquals('GBP', $moneyProperty->getCurrency()->getCode());
-        $this->assertEquals(2000, $moneyProperty->getAmount());
+        self::assertNotSame($money, $moneyProperty);
+        self::assertEquals('GBP', $moneyProperty->getCurrency()->getCode());
+        self::assertEquals(2000, $moneyProperty->getAmount());
     }
 
     public function testValidatedFormValuesAreReflectedInObject(): void
@@ -94,26 +94,26 @@ class MoneyFieldsetTest extends TestCase
                 'amount' => '123.45',
             ],
         ]);
-        $this->assertTrue($form->isValid());
+        self::assertTrue($form->isValid());
         $object = $form->getData();
-        $this->assertInstanceOf(Money::class, $object->amount);
+        self::assertInstanceOf(Money::class, $object->amount);
         $moneyProperty = $object->amount;
         assert($moneyProperty instanceof Money);
-        $this->assertEquals('ZAR', $moneyProperty->getCurrency()->getCode());
-        $this->assertEquals(12345, $moneyProperty->getAmount());
+        self::assertEquals('ZAR', $moneyProperty->getCurrency()->getCode());
+        self::assertEquals(12345, $moneyProperty->getAmount());
     }
 
     public function testRetrievalOfCurrencyElement(): void
     {
         $fieldset = $this->fieldset();
         $currency = $fieldset->currencyElement();
-        $this->assertSame('currency', $currency->getName());
+        self::assertSame('currency', $currency->getName());
     }
 
     public function testRetrievalOfAmountElement(): void
     {
         $fieldset = $this->fieldset();
         $amount = $fieldset->amountElement();
-        $this->assertSame('amount', $amount->getName());
+        self::assertSame('amount', $amount->getName());
     }
 }

@@ -16,7 +16,7 @@ class CurrencySelectTest extends TestCase
     public function testSelectContainsExpectedOptions(): void
     {
         $select = new CurrencySelect(new ISOCurrencies());
-        $this->assertContains('GBP', $select->getValueOptions());
+        self::assertContains('GBP', $select->getValueOptions());
     }
 
     public function testElementCanBeRetrievedFromFormManager(): void
@@ -24,6 +24,6 @@ class CurrencySelectTest extends TestCase
         $forms = $this->getContainer()->get('FormElementManager');
         assert($forms instanceof AbstractPluginManager);
         $element = $forms->get(CurrencySelect::class);
-        $this->assertInstanceOf(CurrencySelect::class, $element);
+        self::assertInstanceOf(CurrencySelect::class, $element);
     }
 }
