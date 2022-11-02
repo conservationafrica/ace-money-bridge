@@ -40,9 +40,7 @@ class CurrencyValidatorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidStringCodes
-     */
+    /** @dataProvider invalidStringCodes */
     public function testInvalidCode(string $code): void
     {
         self::assertFalse($this->validator->isValid($code));
@@ -60,7 +58,7 @@ class CurrencyValidatorTest extends TestCase
         self::assertArrayHasKey(CurrencyValidator::CODE_NOT_ACCEPTABLE, $this->validator->getMessages());
         self::assertStringContainsString(
             'The currency "ZZZ" is not available',
-            $this->validator->getMessages()[CurrencyValidator::CODE_NOT_ACCEPTABLE]
+            $this->validator->getMessages()[CurrencyValidator::CODE_NOT_ACCEPTABLE],
         );
     }
 
@@ -74,9 +72,7 @@ class CurrencyValidatorTest extends TestCase
         }
     }
 
-    /**
-     * @dataProvider validCodes
-     */
+    /** @dataProvider validCodes */
     public function testValidCodes(string $code): void
     {
         self::assertTrue($this->validator->isValid($code));
@@ -88,7 +84,7 @@ class CurrencyValidatorTest extends TestCase
         self::assertArrayHasKey(CurrencyValidator::CODE_NOT_ACCEPTABLE, $this->validator->getMessages());
         self::assertStringContainsString(
             'The currency "ZZZ" is not available',
-            $this->validator->getMessages()[CurrencyValidator::CODE_NOT_ACCEPTABLE]
+            $this->validator->getMessages()[CurrencyValidator::CODE_NOT_ACCEPTABLE],
         );
     }
 }

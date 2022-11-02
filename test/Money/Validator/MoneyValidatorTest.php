@@ -21,8 +21,8 @@ class MoneyValidatorTest extends TestCase
         parent::setUp();
         $this->validator = new MoneyValidator(
             new CurrencyValidator(
-                new ISOCurrencies()
-            )
+                new ISOCurrencies(),
+            ),
         );
     }
 
@@ -72,7 +72,7 @@ class MoneyValidatorTest extends TestCase
             'amount' => $inputAmount,
         ];
         $this->assertTrue(
-            $this->validator->isValid($input)
+            $this->validator->isValid($input),
         );
     }
 
@@ -84,7 +84,7 @@ class MoneyValidatorTest extends TestCase
     public function testInvalidInput($input): void
     {
         $this->assertFalse(
-            $this->validator->isValid($input)
+            $this->validator->isValid($input),
         );
     }
 
@@ -92,7 +92,7 @@ class MoneyValidatorTest extends TestCase
     {
         $input = new Money(100, new Currency('GBP'));
         $this->assertTrue(
-            $this->validator->isValid($input)
+            $this->validator->isValid($input),
         );
     }
 }

@@ -18,7 +18,7 @@ class MoneyHydratorFactory
 
         return new MoneyHydrator(
             new DecimalMoneyFormatter($currencies),
-            new DecimalMoneyParser($currencies)
+            new DecimalMoneyParser($currencies),
         );
     }
 }

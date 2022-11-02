@@ -30,7 +30,7 @@ class MoneyFieldsetTest extends TestCase
         $list = new ISOCurrencies();
         $this->hydrator = new MoneyHydrator(
             new DecimalMoneyFormatter($list),
-            new DecimalMoneyParser($list)
+            new DecimalMoneyParser($list),
         );
     }
 

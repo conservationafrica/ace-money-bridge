@@ -16,7 +16,7 @@ class MoneyElementFactory
         $hydrators = $container->get(HydratorPluginManager::class);
 
         return new MoneyElement(
-            $hydrators->get(MoneyHydrator::class)
+            $hydrators->get(MoneyHydrator::class),
         );
     }
 }

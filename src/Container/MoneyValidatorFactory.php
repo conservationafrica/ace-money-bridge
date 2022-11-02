@@ -16,7 +16,7 @@ class MoneyValidatorFactory
         $validators = $container->get(ValidatorPluginManager::class);
 
         return new MoneyValidator(
-            $validators->get(CurrencyValidator::class)
+            $validators->get(CurrencyValidator::class),
         );
     }
 }

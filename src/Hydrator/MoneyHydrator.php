@@ -57,7 +57,7 @@ class MoneyHydrator implements HydratorInterface
             throw new InvalidArgumentException(sprintf(
                 'Expected an instance of %s but received %s',
                 Money::class,
-                is_object($object) ? get_class($object) : gettype($object)
+                is_object($object) ? get_class($object) : gettype($object),
             ));
         }
 
@@ -69,13 +69,13 @@ class MoneyHydrator implements HydratorInterface
     {
         if (! array_key_exists('currency', $data)) {
             throw new InvalidArgumentException(
-                'Expected the array key \'currency\' to be present in the input array'
+                'Expected the array key \'currency\' to be present in the input array',
             );
         }
 
         if (! array_key_exists('amount', $data)) {
             throw new InvalidArgumentException(
-                'Expected the array key \'amount\' to be present in the input array'
+                'Expected the array key \'amount\' to be present in the input array',
             );
         }
     }

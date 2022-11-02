@@ -25,7 +25,7 @@ class MoneyHydratorTest extends TestCase
         $list = new ISOCurrencies();
         $this->hydrator = new MoneyHydrator(
             new DecimalMoneyFormatter($list),
-            new DecimalMoneyParser($list)
+            new DecimalMoneyParser($list),
         );
     }
 
@@ -41,9 +41,7 @@ class MoneyHydratorTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidExtractionTypes
-     */
+    /** @dataProvider invalidExtractionTypes */
     public function testExtractThrowsExceptionForNonMoney($arg): void
     {
         $this->expectException(InvalidArgumentException::class);

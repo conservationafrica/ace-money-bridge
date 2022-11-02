@@ -19,7 +19,7 @@ class DefaultCurrencyFactory
         if (! is_string($code)) {
             throw new ConfigurationException(
                 'Configuration should have a key "defaultCurrencyCode" that contains a string representing ' .
-                'the default currency code to use when one is otherwise unavailable'
+                'the default currency code to use when one is otherwise unavailable',
             );
         }
 
