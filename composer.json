@@ -28,16 +28,17 @@
         "laminas/laminas-hydrator": "^3 || ^4",
         "laminas/laminas-i18n": "^2.9",
         "laminas/laminas-inputfilter": "^2.10",
+        "laminas/laminas-servicemanager": "^3",
         "laminas/laminas-stdlib": "^3.2",
         "laminas/laminas-validator": "^2.13",
         "moneyphp/money": "^3.2",
         "psr/container": "^1.0 || ^2.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^9",
-        "laminas/laminas-code": "^3.3",
-        "laminas/laminas-config-aggregator": "^1.1",
-        "phpunit/phpunit": "^9"
+        "doctrine/coding-standard": "^9.0.2",
+        "laminas/laminas-code": "^3.5.1",
+        "laminas/laminas-config-aggregator": "^1.7",
+        "phpunit/phpunit": "^9.5.26"
     },
     "autoload": {
         "psr-4": {
