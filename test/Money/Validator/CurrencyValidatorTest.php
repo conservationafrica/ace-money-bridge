@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ACETest\Money\Validator;
 
 use ACE\Money\Validator\CurrencyValidator;
+use Generator;
 use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use PHPUnit\Framework\TestCase;
@@ -28,7 +29,7 @@ class CurrencyValidatorTest extends TestCase
         self::assertArrayHasKey(CurrencyValidator::INVALID_TYPE, $this->validator->getMessages());
     }
 
-    /** @return array<string[]> */
+    /** @return list<array{0: string}> */
     public function invalidStringCodes(): array
     {
         return [
@@ -62,8 +63,8 @@ class CurrencyValidatorTest extends TestCase
         );
     }
 
-    /** @return iterable<string[]> */
-    public function validCodes(): iterable
+    /** @return Generator<array-key, array{0: string}> */
+    public function validCodes(): Generator
     {
         foreach ((new ISOCurrencies())->getIterator() as $currency) {
             assert($currency instanceof Currency);

@@ -42,15 +42,15 @@ class MoneyElementTest extends TestCase
 
     public function testElementsCanBeRetrieved(): void
     {
-        $this->assertNotNull($this->element->amountElement());
-        $this->assertNotNull($this->element->currencyElement());
+        self::assertNotNull($this->element->amountElement());
+        self::assertNotNull($this->element->currencyElement());
     }
 
     public function testWeCanGetSomeMoneyOutOfTheForm(): void
     {
         $this->prepareForm();
-        $this->assertSame('myMoney', $this->element->getName());
-        $this->assertSame($this->element, $this->form->get('myMoney'));
+        self::assertSame('myMoney', $this->element->getName());
+        self::assertSame($this->element, $this->form->get('myMoney'));
 
         $input = [
             'myMoney' => [
@@ -60,10 +60,10 @@ class MoneyElementTest extends TestCase
         ];
 
         $this->form->setData($input);
-        $this->assertTrue($this->form->isValid(), json_encode($this->form->getMessages()));
+        self::assertTrue($this->form->isValid(), json_encode($this->form->getMessages()));
         $output = $this->form->getData();
-        $this->assertArrayHasKey('myMoney', $output);
-        $this->assertInstanceOf(MoneyValue::class, $output['myMoney']);
+        self::assertArrayHasKey('myMoney', $output);
+        self::assertInstanceOf(MoneyValue::class, $output['myMoney']);
     }
 
     public function testMoneyElementInputIsOk(): void
@@ -71,10 +71,10 @@ class MoneyElementTest extends TestCase
         $this->prepareForm();
         $money = new MoneyValue(123, new Currency('GBP'));
         $this->form->setData(['myMoney' => $money]);
-        $this->assertTrue($this->form->isValid());
+        self::assertTrue($this->form->isValid());
         $out = $this->form->getData()['myMoney'];
-        $this->assertInstanceOf(MoneyValue::class, $out);
-        $this->assertTrue($money->equals($out));
+        self::assertInstanceOf(MoneyValue::class, $out);
+        self::assertTrue($money->equals($out));
     }
 
     public function testInvalidArrayInput(): void
@@ -87,9 +87,9 @@ class MoneyElementTest extends TestCase
         ];
         $this->prepareForm();
         $this->form->setData($input);
-        $this->assertFalse($this->form->isValid());
+        self::assertFalse($this->form->isValid());
         $out = $this->form->getData()['myMoney'];
-        $this->assertEquals($input['myMoney'], $out);
+        self::assertEquals($input['myMoney'], $out);
     }
 
     public function testStringValueCanBeRetrieved(): void
@@ -103,7 +103,7 @@ class MoneyElementTest extends TestCase
         $this->prepareForm();
         $this->form->setData($input);
         $value = $this->element->getValue();
-        $this->assertStringMatchesFormat('%s %f', $value);
+        self::assertStringMatchesFormat('%s %f', $value);
     }
 
     public function testElementAttributesWillBeProvidedToElements(): void
@@ -112,8 +112,8 @@ class MoneyElementTest extends TestCase
             'currency_attributes' => ['data-foo' => 'baz'],
             'amount_attributes' => ['data-bar' => 'bing'],
         ]);
-        $this->assertSame('baz', $this->element->currencyElement()->getAttribute('data-foo'));
-        $this->assertSame('bing', $this->element->amountElement()->getAttribute('data-bar'));
+        self::assertSame('baz', $this->element->currencyElement()->getAttribute('data-foo'));
+        self::assertSame('bing', $this->element->amountElement()->getAttribute('data-bar'));
     }
 
     public function testElementOptionsWillBeProvidedToElements(): void
@@ -122,7 +122,7 @@ class MoneyElementTest extends TestCase
             'currency_options' => ['label' => 'C'],
             'amount_options' => ['label' => 'Amt'],
         ]);
-        $this->assertSame('C', $this->element->currencyElement()->getLabel());
-        $this->assertSame('Amt', $this->element->amountElement()->getLabel());
+        self::assertSame('C', $this->element->currencyElement()->getLabel());
+        self::assertSame('Amt', $this->element->amountElement()->getLabel());
     }
 }

@@ -20,7 +20,7 @@ class CurrencyCodeToCurrencyFilterTest extends TestCase
         $this->filter = new CurrencyCodeToCurrencyFilter();
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: mixed}> */
     public function dataThatShouldNotBeFiltered(): array
     {
         return [
@@ -47,11 +47,12 @@ class CurrencyCodeToCurrencyFilterTest extends TestCase
      */
     public function testUnfilteredValues($value): void
     {
+        /** @var mixed $filtered */
         $filtered = $this->filter->filter($value);
         self::assertSame($value, $filtered);
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: string, 1: string}> */
     public function dataThatShouldBeFiltered(): array
     {
         return [

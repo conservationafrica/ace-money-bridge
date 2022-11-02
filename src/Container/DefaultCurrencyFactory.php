@@ -8,6 +8,8 @@ use ACE\Money\Exception\ConfigurationException;
 use Money\Currency;
 use Psr\Container\ContainerInterface;
 
+use function assert;
+use function is_array;
 use function is_string;
 
 class DefaultCurrencyFactory
@@ -15,6 +17,7 @@ class DefaultCurrencyFactory
     public function __invoke(ContainerInterface $container): Currency
     {
         $config = $container->get('config');
+        assert(is_array($config));
         $code = $config['defaultCurrencyCode'] ?? null;
         if (! is_string($code)) {
             throw new ConfigurationException(
@@ -23,6 +26,6 @@ class DefaultCurrencyFactory
             );
         }
 
-        return new Currency($config['defaultCurrencyCode']);
+        return new Currency($code);
     }
 }

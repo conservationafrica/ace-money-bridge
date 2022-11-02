@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class ToMoneyTest extends TestCase
 {
-    /** @return mixed[] */
+    /** @return list<array{0: int|float|numeric-string, 1: string, 2: int, 3: string}> */
     public function validValues(): array
     {
         return [
@@ -27,7 +27,7 @@ class ToMoneyTest extends TestCase
         ];
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: mixed}> */
     public function invalidInput(): array
     {
         return [
@@ -58,9 +58,9 @@ class ToMoneyTest extends TestCase
             'amount' => $inputAmount,
         ];
         $result = (new ToMoney())->filter($input);
-        $this->assertInstanceOf(Money::class, $result);
-        $this->assertSame($expectAmount, (int) $result->getAmount());
-        $this->assertSame($expectCode, $result->getCurrency()->getCode());
+        self::assertInstanceOf(Money::class, $result);
+        self::assertSame($expectAmount, (int) $result->getAmount());
+        self::assertSame($expectCode, $result->getCurrency()->getCode());
     }
 
     /**
@@ -70,14 +70,15 @@ class ToMoneyTest extends TestCase
      */
     public function testInvalidInput($input): void
     {
+        /** @var mixed $result */
         $result = (new ToMoney())->filter($input);
-        $this->assertEquals($input, $result);
+        self::assertEquals($input, $result);
     }
 
     public function testMoneyInstanceWillNotBeFiltered(): void
     {
         $input = new Money(100, new Currency('GBP'));
         $result = (new ToMoney())->filter($input);
-        $this->assertSame($input, $result);
+        self::assertSame($input, $result);
     }
 }

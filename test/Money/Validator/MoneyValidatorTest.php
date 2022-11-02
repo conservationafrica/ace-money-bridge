@@ -26,7 +26,7 @@ class MoneyValidatorTest extends TestCase
         );
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: int|float|numeric-string, 1: string, 2: int, 3: string}> */
     public function validValues(): array
     {
         return [
@@ -42,7 +42,7 @@ class MoneyValidatorTest extends TestCase
         ];
     }
 
-    /** @return mixed[] */
+    /** @return list<array{0: mixed}> */
     public function invalidInput(): array
     {
         return [
@@ -61,17 +61,16 @@ class MoneyValidatorTest extends TestCase
 
     /**
      * @param mixed $inputAmount
-     * @param mixed $inputCode
      *
      * @dataProvider validValues
      */
-    public function testValidValues($inputAmount, $inputCode, int $expectAmount, string $expectCode): void
+    public function testValidValues($inputAmount, string $inputCode): void
     {
         $input = [
             'currency' => $inputCode,
             'amount' => $inputAmount,
         ];
-        $this->assertTrue(
+        self::assertTrue(
             $this->validator->isValid($input),
         );
     }
@@ -83,7 +82,7 @@ class MoneyValidatorTest extends TestCase
      */
     public function testInvalidInput($input): void
     {
-        $this->assertFalse(
+        self::assertFalse(
             $this->validator->isValid($input),
         );
     }
@@ -91,7 +90,7 @@ class MoneyValidatorTest extends TestCase
     public function testMoneyInstanceWillBeValid(): void
     {
         $input = new Money(100, new Currency('GBP'));
-        $this->assertTrue(
+        self::assertTrue(
             $this->validator->isValid($input),
         );
     }

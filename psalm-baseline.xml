@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.29.0@7ec5ffbd5f68ae03782d7fd33fff0c45a69f95b3">
+  <file src="src/Container/MoneyElementFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$hydrators-&gt;get(MoneyHydrator::class)</code>
+    </MixedArgument>
+  </file>
+  <file src="src/Container/MoneyFieldsetFactory.php">
+    <MixedArgument occurrences="3">
+      <code>$formManager-&gt;get(CurrencyElement::class)</code>
+      <code>$formManager-&gt;get(Money::class)</code>
+      <code>$hydrators-&gt;get(MoneyHydrator::class)</code>
+    </MixedArgument>
+  </file>
+  <file src="src/Container/MoneyValidatorFactory.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$validators-&gt;get(CurrencyValidator::class)</code>
+    </ArgumentTypeCoercion>
+  </file>
+  <file src="src/Form/Element/Currency.php">
+    <NonInvariantDocblockPropertyType occurrences="1">
+      <code>$attributes</code>
+    </NonInvariantDocblockPropertyType>
+  </file>
+  <file src="src/Form/Element/Money.php">
+    <MissingClosureParamType occurrences="1">
+      <code>$value</code>
+    </MissingClosureParamType>
+  </file>
+  <file src="src/Form/Element/MoneyElement.php">
+    <MissingParamType occurrences="2">
+      <code>$options</code>
+      <code>$options</code>
+    </MissingParamType>
+    <MixedArgument occurrences="8">
+      <code>$options</code>
+      <code>$options</code>
+      <code>$options['amount_attributes']</code>
+      <code>$options['amount_options']</code>
+      <code>$options['currency_attributes']</code>
+      <code>$options['currency_options']</code>
+      <code>$this-&gt;amount-&gt;getValue()</code>
+      <code>$this-&gt;currency-&gt;getValue()</code>
+    </MixedArgument>
+    <PossiblyNullOperand occurrences="2">
+      <code>$name</code>
+      <code>$name</code>
+    </PossiblyNullOperand>
+    <PossiblyNullReference occurrences="1">
+      <code>extract</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Form/MoneyFieldset.php">
+    <MissingParamType occurrences="1">
+      <code>$options</code>
+    </MissingParamType>
+    <MixedArgument occurrences="1">
+      <code>$options</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="4">
+      <code>$amountAttributes</code>
+      <code>$amountOptions</code>
+      <code>$currencyAttributes</code>
+      <code>$currencyOptions</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Hydrator/MoneyHydrator.php">
+    <InvalidReturnStatement occurrences="1">
+      <code>$this-&gt;parser-&gt;parse($data['amount'], new Currency($data['currency']))</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>hydrate</code>
+    </InvalidReturnType>
+    <MissingParamType occurrences="1">
+      <code>$object</code>
+    </MissingParamType>
+    <MixedArgument occurrences="2">
+      <code>$data['amount']</code>
+      <code>$data['currency']</code>
+    </MixedArgument>
+  </file>
+  <file src="src/InputFilter/MoneyInputFilter.php">
+    <MissingClosureParamType occurrences="1">
+      <code>$value</code>
+    </MissingClosureParamType>
+  </file>
+  <file src="src/InputFilter/RequireableInputFilter.php">
+    <MixedAssignment occurrences="1">
+      <code>$child</code>
+    </MixedAssignment>
+  </file>
+</files>

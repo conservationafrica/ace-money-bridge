@@ -12,9 +12,9 @@ class RequireableInputFilterTest extends TestCase
     public function testSetRequired(): void
     {
         $input = new RequireableInputFilter();
-        $this->assertTrue($input->isRequired());
+        self::assertTrue($input->isRequired());
         $input->setRequired(false);
-        $this->assertFalse($input->isRequired());
+        self::assertFalse($input->isRequired());
     }
 
     public function testRequiredInputsAreRequiredByDefault(): void
@@ -25,11 +25,11 @@ class RequireableInputFilterTest extends TestCase
             'required' => true,
         ]);
         $input->setData([]);
-        $this->assertFalse($input->isValid());
+        self::assertFalse($input->isValid());
         $input->setData(['test' => null]);
-        $this->assertFalse($input->isValid());
+        self::assertFalse($input->isValid());
         $input->setData(['test' => 'Foo']);
-        $this->assertTrue($input->isValid());
+        self::assertTrue($input->isValid());
     }
 
     public function testEntireInputFilterCanBeMadeOptional(): void
@@ -41,11 +41,11 @@ class RequireableInputFilterTest extends TestCase
         ]);
         $input->setRequired(false);
         $input->setData([]);
-        $this->assertTrue($input->isValid());
+        self::assertTrue($input->isValid());
         $input->setData(['test' => null]);
-        $this->assertTrue($input->isValid());
+        self::assertTrue($input->isValid());
         $input->setData(['test' => 'Foo']);
-        $this->assertTrue($input->isValid());
+        self::assertTrue($input->isValid());
     }
 
     public function testNestedInputIsRequiredByDefault(): void
@@ -62,11 +62,11 @@ class RequireableInputFilterTest extends TestCase
         ]);
         $input->add($child, 'nested');
         $input->setData(['test' => 'Foo']);
-        $this->assertFalse($input->isValid());
+        self::assertFalse($input->isValid());
         $messages = $input->getMessages();
-        $this->assertArrayHasKey('nested', $messages);
-        $this->assertIsArray($messages['nested']);
-        $this->assertArrayHasKey('child', $messages['nested']);
+        self::assertArrayHasKey('nested', $messages);
+        self::assertIsArray($messages['nested']);
+        self::assertArrayHasKey('child', $messages['nested']);
     }
 
     public function testNestedInputCanBeOptional(): void
@@ -84,9 +84,9 @@ class RequireableInputFilterTest extends TestCase
         $child->setRequired(false);
         $input->add($child, 'nested');
         $input->setData(['test' => 'Foo']);
-        $this->assertTrue($input->isValid());
+        self::assertTrue($input->isValid());
         $messages = $input->getMessages();
-        $this->assertArrayNotHasKey('nested', $messages);
+        self::assertArrayNotHasKey('nested', $messages);
     }
 
     public function testNestedFiltersAreValidatedIfNonEmptyEvenIfParentFilterIsOptional(): void
@@ -107,9 +107,9 @@ class RequireableInputFilterTest extends TestCase
             'test' => null,
             'nested' => ['child' => 'Foo'],
         ]);
-        $this->assertFalse($input->isValid());
+        self::assertFalse($input->isValid());
         $messages = $input->getMessages();
-        $this->assertArrayNotHasKey('nested', $messages);
-        $this->assertArrayHasKey('test', $messages);
+        self::assertArrayNotHasKey('nested', $messages);
+        self::assertArrayHasKey('test', $messages);
     }
 }

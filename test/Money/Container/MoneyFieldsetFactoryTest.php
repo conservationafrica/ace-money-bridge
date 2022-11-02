@@ -6,6 +6,7 @@ namespace ACETest\Money\Container;
 
 use ACE\Money\Form\MoneyFieldset;
 use ACETest\Money\TestCase;
+use Laminas\Form\FormElementManager;
 use Money\Currency;
 
 class MoneyFieldsetFactoryTest extends TestCase
@@ -13,7 +14,7 @@ class MoneyFieldsetFactoryTest extends TestCase
     private function getFieldsetFromContainer(): MoneyFieldset
     {
         $container = $this->getContainer();
-        $forms = $container->get('FormElementManager');
+        $forms = $container->get(FormElementManager::class);
 
         return $forms->get(MoneyFieldset::class);
     }
@@ -21,13 +22,13 @@ class MoneyFieldsetFactoryTest extends TestCase
     public function testFieldsetCanBeRetrievedFromFormManager(): void
     {
         $fieldset = $this->getFieldsetFromContainer();
-        $this->assertInstanceOf(MoneyFieldset::class, $fieldset);
+        self::assertInstanceOf(MoneyFieldset::class, $fieldset);
     }
 
     public function testDefaultCurrencyIsPopulatedAsCurrencyValue(): void
     {
         $fieldset = $this->getFieldsetFromContainer();
         $default = $this->getContainer()->get(Currency::class);
-        $this->assertSame($default->getCode(), $fieldset->get('currency')->getValue());
+        self::assertSame($default->getCode(), $fieldset->get('currency')->getValue());
     }
 }
