@@ -9,3 +9,29 @@ on:
 jobs:
   ci:
     uses: laminas/workflow-continuous-integration/.github/workflows/continuous-integration.yml@1.x
+
+  composer-require-checker:
+    name: "Check for missing dependencies"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          ini-values: memory_limit=-1
+          extensions: ${{ env.php_extensions }}
+
+      - uses: "ramsey/composer-install@2.1.0"
+
+      - name: "Set global composer bin-dir"
+        run: composer global config bin-dir /usr/local/bin
+
+      - name: "Install require checker"
+        run: composer global require -W maglnet/composer-require-checker
+
+      - name: "Check"
+        run: /usr/local/bin/composer-require-checker check
