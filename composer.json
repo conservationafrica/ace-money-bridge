@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "php": "^7.3 || ~8.0",
+        "php": "^7.3 || ~8.0 || ~8.1",
         "ext-json": "*",
         "laminas/laminas-dependency-plugin": "^1.0 || ^2.0",
         "laminas/laminas-filter": "^2.9",
