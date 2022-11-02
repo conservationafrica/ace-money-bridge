@@ -29,7 +29,7 @@ class MoneyFieldset extends Fieldset
         $this->setAllowedObjectBindingClass(Money::class);
         // If an initial object is not set, hydration will not work and an array will be returned in getData()
         $this->setObject(
-            new Money(0, $defaultCurrency)
+            new Money(0, $defaultCurrency),
         );
         $this->populateValues([
             'currency' => $defaultCurrency->getCode(),

@@ -62,9 +62,7 @@ class CurrencyCodeToCurrencyFilterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataThatShouldBeFiltered
-     */
+    /** @dataProvider dataThatShouldBeFiltered */
     public function testFilteredValues(string $value, string $expect): void
     {
         $filtered = $this->filter->filter($value);

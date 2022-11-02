@@ -24,7 +24,7 @@ class MoneyFieldsetFactory
             $formManager->get(CurrencyElement::class),
             $formManager->get(Money::class),
             $hydrators->get(MoneyHydrator::class),
-            $container->get(Currency::class)
+            $container->get(Currency::class),
         );
     }
 }

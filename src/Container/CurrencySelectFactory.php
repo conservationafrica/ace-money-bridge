@@ -13,7 +13,7 @@ class CurrencySelectFactory
     public function __invoke(ContainerInterface $container): CurrencySelect
     {
         return new CurrencySelect(
-            $container->get(Currencies::class)
+            $container->get(Currencies::class),
         );
     }
 }

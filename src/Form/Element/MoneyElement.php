@@ -61,7 +61,7 @@ class MoneyElement extends Element implements InputProviderInterface, ElementPre
         return trim(sprintf(
             '%s %s',
             $this->currency->getValue(),
-            $this->amount->getValue()
+            $this->amount->getValue(),
         ));
     }
 
@@ -72,9 +72,7 @@ class MoneyElement extends Element implements InputProviderInterface, ElementPre
         $this->currency->setName($name . '[currency]');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function getInputSpecification(): array
     {
         $spec = (new MoneyInputSpec())($this->hasAttribute('required'));

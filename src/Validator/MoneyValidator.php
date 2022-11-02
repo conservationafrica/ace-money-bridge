@@ -34,9 +34,7 @@ class MoneyValidator extends AbstractValidator
         parent::__construct();
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     public function isValid($value): bool
     {
         if ($value instanceof Money) {
