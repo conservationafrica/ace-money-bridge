@@ -1,6 +1,6 @@
 {
-    "name": "ace/zend-money",
-    "description": "Helpful form and validation stuff for zend's form and moneyphp",
+    "name": "conservationafrica/laminas-money",
+    "description": "Helpful form and validation stuff for Laminas form and moneyphp",
     "type": "library",
     "license": "MIT",
     "authors": [
