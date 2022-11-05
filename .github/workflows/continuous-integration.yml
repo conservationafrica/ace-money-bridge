@@ -27,7 +27,7 @@ jobs:
           ini-values: memory_limit=-1
           extensions: ${{ env.php_extensions }}
 
-      - uses: "ramsey/composer-install@2.1.0"
+      - uses: "ramsey/composer-install@2.2.0"
 
       - name: "Set global composer bin-dir"
         run: composer global config bin-dir /usr/local/bin
