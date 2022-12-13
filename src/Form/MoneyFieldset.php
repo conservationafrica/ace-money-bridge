@@ -21,6 +21,7 @@ class MoneyFieldset extends Fieldset
         Currency $defaultCurrency
     ) {
         parent::__construct();
+
         $currencyElement->setName('currency');
         $this->add($currencyElement);
         $amountElement->setName('amount');
@@ -40,6 +41,7 @@ class MoneyFieldset extends Fieldset
     public function setOptions($options): self
     {
         parent::setOptions($options);
+
         $currencyOptions = $this->getOption('currency')['options'] ?? null;
         if (is_iterable($currencyOptions)) {
             $this->currencyElement()->setOptions($currencyOptions);

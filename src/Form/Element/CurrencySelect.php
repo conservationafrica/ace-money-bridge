@@ -17,6 +17,7 @@ class CurrencySelect extends Select
     public function __construct(Currencies $currencies)
     {
         parent::__construct();
+
         $this->setValueOptions($this->valueOptionsFromCurrencyList($currencies));
     }
 

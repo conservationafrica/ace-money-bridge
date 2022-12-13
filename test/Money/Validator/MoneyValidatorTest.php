@@ -19,6 +19,7 @@ class MoneyValidatorTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->validator = new MoneyValidator(
             new CurrencyValidator(
                 new ISOCurrencies(),

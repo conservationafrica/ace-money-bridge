@@ -17,6 +17,7 @@ class CurrencyCodeToCurrencyFilterTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->filter = new CurrencyCodeToCurrencyFilter();
     }
 
