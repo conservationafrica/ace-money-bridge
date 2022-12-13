@@ -36,10 +36,10 @@
         "doctrine/coding-standard": "^11.0.0",
         "laminas/laminas-code": "^3.5.1 || ^4.0.0",
         "laminas/laminas-config-aggregator": "^1.7",
-        "laminas/laminas-db": "^2.15",
-        "phpunit/phpunit": "^9.5.26",
-        "psalm/plugin-phpunit": "^0.18.0",
-        "vimeo/psalm": "^4.29"
+        "laminas/laminas-db": "^2.15.1",
+        "phpunit/phpunit": "^9.5.27",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "vimeo/psalm": "^4.30"
     },
     "autoload": {
         "psr-4": {
