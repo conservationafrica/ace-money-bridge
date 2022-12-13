@@ -15,6 +15,7 @@ class MoneyInputFilter extends RequireableInputFilter
     public function init(): void
     {
         parent::init();
+
         $this->add([
             'name' => 'currency',
             'required' => true,

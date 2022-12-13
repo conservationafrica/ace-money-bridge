@@ -37,6 +37,7 @@ class MoneyElement extends Element implements InputProviderInterface, ElementPre
         $this->amount = new MoneyInput();
         $this->currency = new CurrencyInput();
         $this->hydrator = $hydrator;
+
         parent::__construct($name, $options);
     }
 

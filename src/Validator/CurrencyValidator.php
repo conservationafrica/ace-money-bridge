@@ -30,6 +30,7 @@ class CurrencyValidator extends AbstractValidator
     public function __construct(Currencies $allowedCurrencyCodes)
     {
         $this->currencies = $allowedCurrencyCodes;
+
         parent::__construct();
     }
 

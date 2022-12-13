@@ -22,6 +22,7 @@ class MoneyHydratorTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $list = new ISOCurrencies();
         $this->hydrator = new MoneyHydrator(
             new DecimalMoneyFormatter($list),

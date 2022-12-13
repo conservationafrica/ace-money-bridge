@@ -23,6 +23,7 @@ class MoneyElementTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $container = $this->getContainer();
         $forms = $container->get('FormElementManager');
         $this->element = $forms->get(MoneyElement::class);

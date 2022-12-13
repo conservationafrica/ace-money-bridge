@@ -29,6 +29,7 @@ class MoneyInputFilterTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+
         $container = $this->getContainer();
         $filters = $container->get(InputFilterPluginManager::class);
         $this->filter = $filters->get(MoneyInputFilter::class);
