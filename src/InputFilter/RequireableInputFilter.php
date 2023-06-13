@@ -26,7 +26,7 @@ class RequireableInputFilter extends InputFilter
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function isValid($context = null): bool
     {
