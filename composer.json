@@ -33,11 +33,11 @@
         "psr/container": "^1.0 || ^2.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^11.0.0",
+        "doctrine/coding-standard": "^11.1",
         "laminas/laminas-code": "^3.5.1 || ^4.0.0",
         "laminas/laminas-config-aggregator": "^1.7",
         "laminas/laminas-db": "^2.15.1",
-        "phpunit/phpunit": "^9.5.27",
+        "phpunit/phpunit": "^9.6.9",
         "psalm/plugin-phpunit": "^0.18.4",
         "vimeo/psalm": "^4.30"
     },
