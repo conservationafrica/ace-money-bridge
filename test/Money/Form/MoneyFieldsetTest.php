@@ -74,7 +74,7 @@ class MoneyFieldsetTest extends TestCase
         $form->bind($bind);
         $form->isValid();
         $value = $form->getData();
-        self::assertObjectHasAttribute('amount', $value);
+        self::assertObjectHasProperty('amount', $value);
         self::assertInstanceOf(Money::class, $value->amount);
         $moneyProperty = $value->amount;
         assert($moneyProperty instanceof Money);
