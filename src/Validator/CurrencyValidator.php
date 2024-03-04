@@ -37,7 +37,7 @@ class CurrencyValidator extends AbstractValidator
     /** @inheritDoc */
     public function isValid($value): bool
     {
-        if ($value instanceof Currency && ! $value->isAvailableWithin($this->currencies)) {
+        if ($value instanceof Currency && ! $this->currencies->contains($value)) {
             $this->setValue($value->getCode());
             $this->error(self::CODE_NOT_ACCEPTABLE);
 
@@ -62,7 +62,7 @@ class CurrencyValidator extends AbstractValidator
         }
 
         $currency = new Currency($value);
-        if (! $currency->isAvailableWithin($this->currencies)) {
+        if (! $this->currencies->contains($currency)) {
             $this->error(self::CODE_NOT_ACCEPTABLE);
 
             return false;
