@@ -39,7 +39,7 @@
         "laminas/laminas-db": "^2.15.1",
         "phpunit/phpunit": "^9.6.17",
         "psalm/plugin-phpunit": "^0.20.0",
-        "vimeo/psalm": "^4.30"
+        "vimeo/psalm": "^6.0"
     },
     "autoload": {
         "psr-4": {
