@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.3.1
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@2.37.1
@@ -27,7 +27,7 @@ jobs:
           ini-values: memory_limit=-1
           extensions: ${{ env.php_extensions }}
 
-      - uses: "ramsey/composer-install@3.0.0"
+      - uses: "ramsey/composer-install@3.2.1"
 
       - name: "Set global composer bin-dir"
         run: composer global config bin-dir /usr/local/bin
